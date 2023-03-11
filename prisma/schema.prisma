@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// everytime you update this file you need to run `npx prisma generate`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./pb_data/data.db"
+}
+
+model Disc {
+  id           String  @id @default(cuid())
+  owner        User?   @relation(fields: [ownerId], references: [id])
+  ownerId      String?
+  name         String?
+  manufacturer String?
+  type         String?
+  speed        Int?
+  glide        Int?
+  turn         Int?
+  fade         Int?
+  stability    String?
+  color        String?
+  link         String?
+  image        String?
+  inBag        Boolean @default(false)
+  notes        String?
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  discs         Disc[]
+}
