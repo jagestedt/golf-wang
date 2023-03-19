@@ -13,13 +13,13 @@ export type DiscProps = {
   inBag: boolean;
 };
 
-const Disc: React.FC<{ post: DiscProps }> = ({ post }) => {
-  const ownerName = post.owner ? post.owner.name : "the woods";
+const Disc: React.FC<{ disc: DiscProps }> = ({ disc }) => {
+  const ownerName = disc.owner ? disc.owner.name : "the woods";
   return (
-    <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
-      <h2>{post.name}</h2>
+    <div onClick={() => Router.push("/p/[id]", `/p/${disc.id}`)}>
+      <h2>{disc.name}</h2>
       <small>Belongs to {ownerName}</small>
-      <ReactMarkdown>{post.manufacturer}</ReactMarkdown>
+      <ReactMarkdown>{disc.manufacturer}</ReactMarkdown>
       <style jsx>{`
         div {
           color: inherit;

@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import Disc, { DiscProps } from "../components/Disc";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.disc.findMany({
+  const discs = await prisma.disc.findMany({
     where: { inBag: true },
     include: {
       owner: {
@@ -13,42 +13,38 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     },
   });
-  console.log(feed);
   return {
-    props: { feed },
+    props: { discs },
     revalidate: 10,
   };
 };
 
 type Props = {
-  feed: DiscProps[];
+  discs: DiscProps[];
 };
 
 const Blog: React.FC<Props> = (props) => {
-  console.log(props.feed);
   return (
     <Layout>
       <div className="page">
         <h1>Public Feed</h1>
-        hej
         <main>
-          {props.feed.map((post) => (
-            <div key={post.id} className="post">
-              <Disc post={post} />
-              hej
+          {props.discs.map((disc) => (
+            <div key={disc.id} className="disc">
+              <Disc disc={disc} />
             </div>
           ))}
         </main>
       </div>
       <style jsx>{`
-        .post {
+        .disc {
           background: white;
           transition: box-shadow 0.1s ease-in;
         }
-        .post:hover {
+        .disc:hover {
           box-shadow: 1px 1px 3px #aaa;
         }
-        .post + .post {
+        .disc + .disc {
           margin-top: 2rem;
         }
       `}</style>
