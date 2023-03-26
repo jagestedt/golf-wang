@@ -98,8 +98,8 @@ const Header: React.FC = () => {
   if (session) {
     left = (
       <div className="left">
-        <Link href="/">Feed</Link>
-        <Link href="/drafts">My drafts</Link>
+        <Link href="/">Bag</Link>
+        <Link href="/newDiscs">New discs</Link>
         <style jsx>{`
           .bold {
             font-weight: bold;
