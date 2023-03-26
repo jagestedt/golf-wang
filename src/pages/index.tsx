@@ -27,7 +27,7 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-        <h1>Public Feed</h1>
+        <h1>Bagged disc</h1>
         <main>
           {props.discs.map((disc) => (
             <div key={disc.id} className="disc">

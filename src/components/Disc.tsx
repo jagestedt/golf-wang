@@ -16,7 +16,7 @@ export type DiscProps = {
 const Disc: React.FC<{ disc: DiscProps }> = ({ disc }) => {
   const ownerName = disc.owner ? disc.owner.name : "the woods";
   return (
-    <div onClick={() => Router.push("/p/[id]", `/p/${disc.id}`)}>
+    <div onClick={() => Router.push("/disc/[id]", `/disc/${disc.id}`)}>
       <h2>{disc.name}</h2>
       <small>Belongs to {ownerName}</small>
       <ReactMarkdown>{disc.manufacturer}</ReactMarkdown>
